@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CodeClassChat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <textarea class="new-message"></textarea>
+
+    <script src="/jquery.js"></script>
+    <script src="/helpers.js"></script>
+    <script>
+      $(function () {
+
+        $(".new-message").keyup(function (e) {
+          if (e.keyCode !== 13) { return; }
+          // on 'enter', send a message to the server
+          e.preventDefault();
+          e.stopPropagation();
+          helpers.sendMessage($.trim($(this).val()));
+          $(this).val("");
+        });
+
+        // Poll the server for new messages.
+        setInterval(function () {
+          helpers.fetchMessages(function (messages) {
+            $.each(messages, function (i, message) {
+              helpers.renderMessage(message);
+            });
+          });
+        }, 2000);
+
+      });
+    </script>
+  </body>
+</html>

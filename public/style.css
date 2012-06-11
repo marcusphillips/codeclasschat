@@ -1,0 +1,23 @@
+html, body {
+  background: #777;
+}
+body {
+  padding: 20px;
+}
+.messages {
+  list-style-type: none;
+  background: white;
+  padding: 10px;
+  margin: 0px;
+}
+.messages li:nth-child(odd) {
+  background: #eee;
+}
+.new-message {
+  height: 1em;
+  resize: none;
+  width: 100%;
+  /* cancel out bootstrap styles */
+  border: none;
+  box-shadow: none;
+}

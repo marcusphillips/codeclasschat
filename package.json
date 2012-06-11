@@ -1,0 +1,15 @@
+{
+  "author": "Michael Jackson and Marcus Phillips <codeclass@marcusphillips.com>",
+  "name": "CodeClassChatServer",
+  "description": "A simple chat server to help teach JavaScript",
+  "version": "0.0.1",
+  "main": "server.js",
+  "dependencies": {
+    "strata": "0.12.5"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "0.4.7"
+  }
+}
