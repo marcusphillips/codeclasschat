@@ -1,8 +1,8 @@
 $(function(){
   var global = (function(){return this;}());
 
-  //var host = "codeclasschat.herokuapp.com";
-  var host = "localhost:1982"; // dev
+  var host = "codeclasschat.herokuapp.com";
+  //var host = "localhost:1982"; // dev
 
   // The time (in milliseconds) of the last message we received.
   var since = 0;
