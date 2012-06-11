@@ -1,8 +1,8 @@
 $(function(){
   var global = (function(){return this;}());
 
-  var host = "codeclasschat.herokuapp.com";
-  //var host = "localhost:1982"; // dev
+  //var host = "codeclasschat.herokuapp.com";
+  var host = "localhost:1982"; // dev
 
   // The time (in milliseconds) of the last message we received.
   var since = 0;
@@ -24,7 +24,7 @@ $(function(){
     },
 
     // Goes to the server to get all undisplayed messages and passes each one to the rendering helper
-    fetchMessages: function(callback) {
+    fetchNewMessages: function(callback) {
       console.log('fetching messages...');
       $.ajax("http://" + host + "/messages", {
         dataType: "jsonp",

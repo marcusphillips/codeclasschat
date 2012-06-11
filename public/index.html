@@ -4,35 +4,39 @@
     <title>CodeClassChat</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <style>
+      body {
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
-    <textarea class="new-message"></textarea>
 
-    <script src="/jquery.js"></script>
     <script src="/helpers.js"></script>
-    <script>
-      $(function () {
+    <h1>Code Class Chat!</h1>
+    <p>
+      This app is designed to help you learn JavaScript. You won't need a server running or anything, just use JSONP to send and recieve API data from a page saved on your computer.
+    </p>
+    <p>
+      To get started, create an HTML file on your computer, and include the following script tags:
+      <pre>&lt;script src="http://codeclasschat.herokuapp.com/jquery.js"&gt;&lt;/script&gt;</pre>
+      <pre>&lt;script src="http://codeclasschat.herokuapp.com/helpers.js"&gt;&lt;/script&gt;</pre>
+      The helpers script introduces a JavaScript object named "helpers", which contains three functions.
+      <ul>
+        <li>
+          <pre>helpers.fetchNewMessages(callback)</pre> This goes to the server to fetch new messages your client hasn't displayed yet. When it has retrieved them, it passes them to the callback you provided.
+        </li>
+        <li>
+          <pre>helpers.renderMessage(messageText)</pre> This takes the text of a message and renders it to the screen.
+        </li>
+        <li>
+          <pre>helpers.sendMessage(messageText)</pre> This takes a string and sends it to the chat server
+        </li>
+      </ul>
+    </p>
+    <p>
+      Now go build a local chat client and start talking! If you like, you can check out <a href="/example">this example</a> of what you're going for.
+    </p>
 
-        $(".new-message").keyup(function (e) {
-          if (e.keyCode !== 13) { return; }
-          // on 'enter', send a message to the server
-          e.preventDefault();
-          e.stopPropagation();
-          helpers.sendMessage($.trim($(this).val()));
-          $(this).val("");
-        });
-
-        // Poll the server for new messages.
-        setInterval(function () {
-          helpers.fetchMessages(function (messages) {
-            $.each(messages, function (i, message) {
-              helpers.renderMessage(message);
-            });
-          });
-        }, 2000);
-
-      });
-    </script>
   </body>
 </html>
