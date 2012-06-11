@@ -19,7 +19,7 @@
     </p>
     <p>
       To get started, create an HTML file on your computer, and include the following script tags:
-      <pre>&lt;script src="http://codeclasschat.herokuapp.com/jquery.js"&gt;&lt;/script&gt;</pre>
+      <pre>&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"&gt;&lt;/script&gt;</pre>
       <pre>&lt;script src="http://codeclasschat.herokuapp.com/helpers.js"&gt;&lt;/script&gt;</pre>
       The helpers script introduces a JavaScript object named "helpers", which contains three functions.
       <ul>
@@ -27,12 +27,18 @@
           <pre>helpers.fetchNewMessages(callback)</pre> This goes to the server to fetch new messages your client hasn't displayed yet. When it has retrieved them, it passes them to the callback you provided.
         </li>
         <li>
-          <pre>helpers.renderMessage(messageText)</pre> This takes the text of a message and renders it to the screen.
+          <pre>helpers.renderMessage(messageText)</pre> This takes the text of a message, transforms it into html, and renders that html to the screen.
+          <div>Note: the function searches the page for a node with the class "messages", and puts results in there. If there isn't one already, it will be created for you.</div>
         </li>
         <li>
           <pre>helpers.sendMessage(messageText)</pre> This takes a string and sends it to the chat server
+          <div>Note: you don't need to handle user input, you can just send messages via the console.</div>
+          <div>If you don't have rendering working yet, You check if your call worked by looking in the example client</div>
         </li>
       </ul>
+    </p>
+    <p>
+      Last, you'll want to set up polling of the helpers.fetchNewMessages() function, using setInterval().
     </p>
     <p>
       Now go build a local chat client and start talking! If you like, you can check out <a href="/example">this example</a> of what you're going for.
